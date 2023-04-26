@@ -1,0 +1,21 @@
+export type Coordinate = [number, number];
+
+export class CartesianGrid {
+  private _generator: ReturnType<typeof coordinates> | null = null;
+
+  constructor(rows: number = 10, columns: number = 10) {
+    this._generator = coordinates(rows, columns);
+  }
+
+  get next(): Coordinate | null {
+    const next = this._generator?.next();
+
+    if (!this._generator || next?.done) return null;
+
+    return next?.value as Coordinate;
+  }
+}
+
+function* coordinates(rows: number, columns: number) {
+  for (let i = 0; i < rows; i++) for (let j = 0; j < columns; j++) yield [i, j];
+}
