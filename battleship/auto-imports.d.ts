@@ -20,6 +20,7 @@ declare global {
   const forwardRef: typeof import('react')['forwardRef']
   const getShipPositions: typeof import('./src/utilities/get-ship-positions/index')['getShipPositions']
   const it: typeof import('vitest')['it']
+  const joinClasses: typeof import('./src/utilities/join-classes')['joinClasses']
   const lazy: typeof import('react')['lazy']
   const memo: typeof import('react')['memo']
   const sortCoordinates: typeof import('./src/utilities/sort-coordinates/index')['sortCoordinates']
