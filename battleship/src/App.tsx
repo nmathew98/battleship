@@ -1,34 +1,30 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { Provider } from "react-redux";
+
 import "./App.css";
+import type { Point } from "./utilities/cartesian-grid";
+import { TileContainer } from "./components/Tile/Container";
+import { globalStore } from "./state";
+import { Tile } from "./components/Tile";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const ROWS = 10;
+  const COLUMNS = 10;
+
+  const grid = new CartesianGrid(ROWS, COLUMNS);
+
+  const points = new Array(ROWS * COLUMNS).fill(null).map(() => grid.next);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Provider store={globalStore}>
+      <TileContainer>
+        {points.map((point) => (
+          <Tile
+            key={TileIdentifier.instance.next(point)}
+            coordinate={point as Point}
+          />
+        ))}
+      </TileContainer>
+    </Provider>
   );
 }
 

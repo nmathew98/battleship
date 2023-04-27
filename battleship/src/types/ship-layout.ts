@@ -1,4 +1,4 @@
-import type { Coordinate } from "../utilities/cartesian-grid";
+import type { Point } from "../utilities/cartesian-grid";
 
 export interface ShipLayout {
   shipTypes: {
@@ -20,11 +20,11 @@ export interface ShipLayoutType {
 
 export interface ShipLayoutPosition {
   ship: ShipTypes;
-  positions: Coordinate[];
+  positions: Point[];
 }
 
 export interface Position {
-  coordinates: Coordinate;
+  coordinates: Point;
   ship: ShipTypes;
   id: number;
 }

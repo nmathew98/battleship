@@ -1,4 +1,4 @@
-import type { Coordinate } from "../cartesian-grid";
+import type { Point } from "../cartesian-grid";
 
 export class TileIdentifier {
   private _generator = counter();
@@ -15,8 +15,10 @@ export class TileIdentifier {
     return TileIdentifier._instance;
   }
 
-  public next(coordinate: Coordinate): number {
-    const key = `${coordinate}`;
+  public next(point: Point | null): number {
+    if (!point) throw new Error("Point must be specified");
+
+    const key = `${point}`;
 
     if (this._generatedIdentifiers.has(key))
       return this._generatedIdentifiers.get(key) as number;

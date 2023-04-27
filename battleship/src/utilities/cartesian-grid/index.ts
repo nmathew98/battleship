@@ -1,4 +1,4 @@
-export type Coordinate = [number, number];
+export type Point = [number, number];
 
 export class CartesianGrid {
   private _generator: ReturnType<typeof coordinates> | null = null;
@@ -7,12 +7,12 @@ export class CartesianGrid {
     this._generator = coordinates(rows, columns);
   }
 
-  get next(): Coordinate | null {
+  get next(): Point | null {
     const next = this._generator?.next();
 
     if (!this._generator || next?.done) return null;
 
-    return next?.value as Coordinate;
+    return next?.value as Point;
   }
 }
 
