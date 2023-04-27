@@ -1,4 +1,4 @@
-import type { Coordinate } from "../cartesian-grid";
+import type { Point } from "../cartesian-grid";
 import { sortCoordinates } from ".";
 
 describe("sortCoordinates", () => {
@@ -10,7 +10,7 @@ describe("sortCoordinates", () => {
       [1, 1],
       [0, 1],
       [2, 1],
-    ] as Coordinate[];
+    ] as Point[];
     const sortedCoordinates = [
       [0, 0],
       [0, 1],
@@ -18,7 +18,7 @@ describe("sortCoordinates", () => {
       [1, 1],
       [2, 0],
       [2, 1],
-    ] as Coordinate[];
+    ] as Point[];
 
     expect(unsortedCoordinates.sort(sortCoordinates)).toEqual(
       sortedCoordinates
