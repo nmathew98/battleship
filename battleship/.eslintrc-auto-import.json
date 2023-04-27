@@ -16,6 +16,7 @@
     "forwardRef": true,
     "getShipPositions": true,
     "it": true,
+    "joinClasses": true,
     "lazy": true,
     "memo": true,
     "sortCoordinates": true,
