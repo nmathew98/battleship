@@ -14,7 +14,7 @@ export const TileContainer = ({
 	const dispatch = useDispatch();
 
 	return (
-		<div className="grid grid-cols-10 max-w-3xl">
+		<div className="grid max-w-3xl grid-cols-10">
 			{Children.map<ReactNode, ReactNode>(children, child => {
 				if (!child || typeof (child as ReactElement).type === "string")
 					return child;

@@ -14,6 +14,6 @@ export const hitsSlice = createSlice({
 
 export const hitsReducer = hitsSlice.reducer;
 export const { hit } = hitsSlice.actions;
-export const makeSelectShip =
+export const makeSelectHit =
 	(id: number) => (state: ReturnType<typeof globalStore.getState>) =>
 		state.hits[id] ?? false;

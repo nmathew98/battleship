@@ -11,5 +11,6 @@
 	"htmlWhitespaceSensitivity": "ignore",
 	"endOfLine": "lf",
 	"embeddedLanguageFormatting": "auto",
-	"printWidth": 80
+	"printWidth": 80,
+	"plugins": ["prettier-plugin-tailwindcss"]
 }
