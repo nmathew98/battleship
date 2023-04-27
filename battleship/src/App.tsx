@@ -11,8 +11,8 @@ import { Fragment } from "react";
 import { Layout } from "./layouts";
 import {
 	DEFAULT_BREAKPOINTS,
-	useScreenBreakpoints,
-} from "./hooks/useScreenBreakpoints";
+	useScreenBreakpoint,
+} from "./hooks/useScreenBreakpoint";
 
 const ROWS = 10;
 const COLUMNS = 10;
@@ -67,7 +67,7 @@ const ViewMobile = () => (
 );
 
 const ResponsiveView = () => {
-	const { currentBreakpoint } = useScreenBreakpoints();
+	const { currentBreakpoint } = useScreenBreakpoint();
 
 	if (currentBreakpoint === DEFAULT_BREAKPOINTS.Desktop)
 		return <ViewDesktop />;

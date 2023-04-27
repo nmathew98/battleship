@@ -10,9 +10,6 @@ import missIconSmall from "../../assets/miss-64.png";
 import { makeSelectMissedHit } from "../../state/miss";
 
 export const Tile = ({ coordinates, id, onClick }: TileProps) => {
-	if (typeof id !== typeof 0)
-		throw new Error("Tiles must have an identifier");
-
 	const [x, y] = coordinates;
 	const isHit = useSelector(makeSelectHit(id as number));
 	const isMiss = useSelector(makeSelectMissedHit(id as number));

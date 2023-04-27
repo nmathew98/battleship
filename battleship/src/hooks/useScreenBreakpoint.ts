@@ -8,7 +8,7 @@ const DEFAULT_MEDIA_QUERIES = {
 	"(min-width: 640px)": DEFAULT_BREAKPOINTS.Desktop,
 };
 
-export const useScreenBreakpoints = (
+export const useScreenBreakpoint = (
 	mediaQueries: MediaQueries = DEFAULT_MEDIA_QUERIES,
 ) => {
 	const determineBreakpoint = () => {
