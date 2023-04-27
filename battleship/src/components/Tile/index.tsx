@@ -24,9 +24,11 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 			className={joinClasses(
 				!isHit && !isMiss,
 				"aspect-square flex items-center relative cursor-default hover:shadow-sm",
-				"border hover:border-emerald-500 cursor-pointer",
-				x === 0 && y === 0 ? "border-t-2 border-l-2" : "",
-				x === 9 && y === 9 ? "border-b-2 border-r-2" : "",
+				"border hover:border-gray-300 hover:scale-105 hover:shadow-sm cursor-pointer transition",
+				y === 0 ? "border-l-2" : "",
+				x === 0 ? "border-t-2" : "",
+				y === 9 ? "border-r-2" : "",
+				x === 9 ? "border-b-2" : "",
 			)}>
 			{!!isHit && (
 				<picture>
