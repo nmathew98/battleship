@@ -5,6 +5,8 @@
 export {}
 declare global {
   const CartesianGrid: typeof import('./src/utilities/cartesian-grid/index')['CartesianGrid']
+  const SHIP_LAYOUT: typeof import('./src/utilities/constants')['SHIP_LAYOUT']
+  const SHIP_TYPES: typeof import('./src/utilities/constants')['SHIP_TYPES']
   const TileIdentifier: typeof import('./src/utilities/tile-identifier/index')['TileIdentifier']
   const afterAll: typeof import('vitest')['afterAll']
   const afterEach: typeof import('vitest')['afterEach']
@@ -16,9 +18,11 @@ declare global {
   const describe: typeof import('vitest')['describe']
   const expect: typeof import('vitest')['expect']
   const forwardRef: typeof import('react')['forwardRef']
+  const getShipPositions: typeof import('./src/utilities/get-ship-positions/index')['getShipPositions']
   const it: typeof import('vitest')['it']
   const lazy: typeof import('react')['lazy']
   const memo: typeof import('react')['memo']
+  const sortCoordinates: typeof import('./src/utilities/sort-coordinates/index')['sortCoordinates']
   const startTransition: typeof import('react')['startTransition']
   const suite: typeof import('vitest')['suite']
   const test: typeof import('vitest')['test']
