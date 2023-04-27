@@ -17,5 +17,6 @@ const customRender = (
 	options?: Parameters<typeof render>[1],
 ) => render(ui, { wrapper: Providers, ...options });
 
+/* eslint-disable react-refresh/only-export-components */
 export * from "@testing-library/react";
 export { customRender as render };

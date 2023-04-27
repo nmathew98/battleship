@@ -30,5 +30,5 @@ export const useScreenBreakpoint = (
 };
 
 export interface MediaQueries {
-	[key: string]: Symbol;
+	[key: string]: symbol;
 }
