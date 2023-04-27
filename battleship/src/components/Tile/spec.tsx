@@ -1,5 +1,4 @@
 import { render } from "../../tests/spec";
-
 import { Tile } from ".";
 
 describe("<Tile />", () => {

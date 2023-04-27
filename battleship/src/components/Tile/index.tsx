@@ -10,8 +10,8 @@ export const Tile = ({ id, onClick }: TileProps) => {
   const isHit = useSelector(makeSelectShip(id as number));
 
   return (
-    <button data-testid={id} onClick={onClick}>
-      {isHit ? <span>Hit!</span> : <span>Not Hit!</span>}
+    <button data-testid={`tile-${id}`} onClick={onClick}>
+      {isHit ? <span>Hit!</span> : <span>Not Hit!</span>} -{" "}
     </button>
   );
 };
