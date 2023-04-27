@@ -1,8 +1,11 @@
-import { render } from "../../tests/spec";
+import { render, screen } from "../../tests/spec";
 import { Tile } from ".";
 
 describe("<Tile />", () => {
-  it("should show 'Not Hit!' when the tile is not hit", () => {
+  it("should not render any images by default", () => {
     render(<Tile id={1} coordinates={[0, 0]} />);
+
+    expect(() => screen.getByAltText("Hit")).toThrow();
+    expect(() => screen.getByAltText("Miss")).toThrow();
   });
 });
