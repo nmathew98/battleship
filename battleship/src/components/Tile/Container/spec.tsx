@@ -1,17 +1,16 @@
 import { fireEvent, render, screen } from "../../../tests/spec";
-
 import { TileContainer } from ".";
 import { Tile } from "..";
 
 describe("<TileContainer />", () => {
-  it("should inject event handlers for its children", () => {
+  it("should assign an id and event handlers to its children", () => {
     render(
       <TileContainer>
-        <Tile coordinate={[0, 0]} />
+        <Tile coordinates={[0, 0]} />
       </TileContainer>
     );
 
-    const tile = screen.getByTestId("1");
+    const tile = screen.getByTestId("tile-1");
 
     fireEvent.click(tile);
 
