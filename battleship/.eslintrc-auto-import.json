@@ -1,6 +1,8 @@
 {
   "globals": {
     "CartesianGrid": true,
+    "SHIP_LAYOUT": true,
+    "SHIP_TYPES": true,
     "TileIdentifier": true,
     "afterAll": true,
     "afterEach": true,
@@ -12,9 +14,11 @@
     "describe": true,
     "expect": true,
     "forwardRef": true,
+    "getShipPositions": true,
     "it": true,
     "lazy": true,
     "memo": true,
+    "sortCoordinates": true,
     "startTransition": true,
     "suite": true,
     "test": true,
