@@ -12,6 +12,7 @@ import { makeSelectMissedHit } from "../../state/miss";
 export const Tile = ({ coordinates, id, onClick }: TileProps) => {
   if (typeof id !== typeof 0) throw new Error("Tiles must have an identifier");
 
+  const [x, y] = coordinates;
   const isHit = useSelector(makeSelectShip(id as number));
   const isMiss = useSelector(makeSelectMissedHit(id as number));
 
@@ -23,10 +24,11 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
         !isHit && !isMiss,
         "aspect-square flex items-center relative cursor-default hover:shadow-sm",
         "border hover:border-emerald-500 cursor-pointer",
-        isEndCell(coordinates)
+        x === 0 && y === 0 ? "border-t-2 border-l-2" : "",
+        x === 9 && y === 9 ? "border-b-2 border-r-2" : ""
       )}
     >
-      {isHit && (
+      {!!isHit && (
         <picture>
           <source
             className="w-full h-auto"
@@ -39,7 +41,7 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
           />
         </picture>
       )}
-      {isMiss && (
+      {!!isMiss && (
         <picture>
           <source
             className="w-full h-auto"
@@ -61,18 +63,6 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
       )}
     </button>
   );
-};
-
-const isEndCell = ([x, y]: Point) => {
-  const classes = [];
-
-  if (y === 0) classes.push("border-l-2");
-  else if (y === 9) classes.push("border-r-2");
-
-  if (x === 0) classes.push("border-t-2");
-  else if (x === 9) classes.push("border-b-2");
-
-  return classes.join(" ");
 };
 
 export interface TileProps {
