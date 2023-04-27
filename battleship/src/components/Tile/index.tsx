@@ -33,7 +33,10 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
             media="(min-width: 600px)"
             srcSet={hitIcon}
           />
-          <img className="w-full h-auto" src={hitIconSmall} />
+          <img
+            className="w-full h-auto border-[0.5px] border-black sm:border-0"
+            src={hitIconSmall}
+          />
         </picture>
       )}
       {isMiss && (
@@ -43,10 +46,13 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
             media="(min-width: 600px)"
             srcSet={missIcon}
           />
-          <img className="w-full h-auto" src={missIconSmall} />
+          <img
+            className="w-full h-auto border-[0.5px] border-black sm:border-0"
+            src={missIconSmall}
+          />
         </picture>
       )}
-      {import.meta.env.DEV && (
+      {!!import.meta.env.DEV && (
         <>
           <span className="absolute bottom-0 right-0 text-emerald-500 text-xs">
             {JSON.stringify(coordinates)}
