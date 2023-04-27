@@ -8,26 +8,23 @@ export interface ShipLayout {
     submarine: ShipLayoutType;
     destroyer: ShipLayoutType;
   };
-  layout: ShipLayoutPosition<ShipTypes<ShipLayout>>[];
+  layout: ShipLayoutPosition[];
 }
 
-export type ShipTypes<T extends ShipLayout> = keyof Pick<
-  T,
-  "shipTypes"
->["shipTypes"];
+export type ShipTypes = keyof Pick<ShipLayout, "shipTypes">["shipTypes"];
 
 export interface ShipLayoutType {
   size: number;
   count: number;
 }
 
-export interface ShipLayoutPosition<T> {
-  ship: T;
+export interface ShipLayoutPosition {
+  ship: ShipTypes;
   positions: Coordinate[];
 }
 
 export interface Position {
   coordinates: Coordinate;
-  ship: ShipTypes<ShipLayout>;
+  ship: ShipTypes;
   id: number;
 }

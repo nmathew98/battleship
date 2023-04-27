@@ -5,6 +5,7 @@ export class TileIdentifier {
   private _generatedIdentifiers = new Map<string, number>();
   private static _instance: TileIdentifier | null = null;
 
+  /* eslint-disable @typescript-eslint/no-empty-function */
   private constructor() {}
 
   static get instance() {

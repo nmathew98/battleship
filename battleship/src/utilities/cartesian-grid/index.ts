@@ -3,7 +3,7 @@ export type Coordinate = [number, number];
 export class CartesianGrid {
   private _generator: ReturnType<typeof coordinates> | null = null;
 
-  constructor(rows: number = 10, columns: number = 10) {
+  constructor(rows = 10, columns = 10) {
     this._generator = coordinates(rows, columns);
   }
 
