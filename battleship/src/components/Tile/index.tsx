@@ -38,6 +38,7 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
           <img
             className="w-full h-auto border-[0.5px] border-black sm:border-0"
             src={hitIconSmall}
+            alt="Hit"
           />
         </picture>
       )}
@@ -51,6 +52,7 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
           <img
             className="w-full h-auto border-[0.5px] border-black sm:border-0"
             src={missIconSmall}
+            alt="Miss"
           />
         </picture>
       )}

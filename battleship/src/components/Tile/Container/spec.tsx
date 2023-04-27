@@ -5,7 +5,9 @@ import { Tile } from "..";
 describe("<TileContainer />", () => {
   it("should assign an id and event handlers to its children", () => {
     render(
-      <TileContainer>
+      <TileContainer
+        shipPositions={[{ coordinates: [0, 0], ship: "cruiser", id: 1 }]}
+      >
         <Tile coordinates={[0, 0]} />
       </TileContainer>
     );
@@ -14,7 +16,7 @@ describe("<TileContainer />", () => {
 
     fireEvent.click(tile);
 
-    const hitTile = screen.getByText("Hit!");
+    const hitTile = screen.getByAltText("Hit");
 
     expect(hitTile).toBeTruthy();
   });
