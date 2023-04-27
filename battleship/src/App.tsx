@@ -10,8 +10,8 @@ import { LayoutMd } from "./layouts/Md";
 import { Fragment } from "react";
 import { Layout } from "./layouts";
 import {
-  DEFAULT_BREAKPOINTS,
-  useScreenBreakpoints,
+	DEFAULT_BREAKPOINTS,
+	useScreenBreakpoints,
 } from "./hooks/useScreenBreakpoints";
 
 const ROWS = 10;
@@ -23,59 +23,60 @@ const points = new Array(ROWS * COLUMNS).fill(null).map(() => grid.next);
 const positions = getShipPositions(SHIP_LAYOUT);
 
 const ViewDesktop = () => (
-  <LayoutMd>
-    <Fragment>
-      <HitContainer>
-        {positions.map((position) => (
-          <HitMarker key={position.id} id={position.id} />
-        ))}
-      </HitContainer>
-    </Fragment>
-    <Fragment>
-      <TileContainer shipPositions={positions}>
-        {points.map((point) => (
-          <Tile
-            key={TileIdentifier.instance.next(point)}
-            coordinates={point as Point}
-          />
-        ))}
-      </TileContainer>
-    </Fragment>
-  </LayoutMd>
+	<LayoutMd>
+		<Fragment>
+			<HitContainer>
+				{positions.map(position => (
+					<HitMarker key={position.id} id={position.id} />
+				))}
+			</HitContainer>
+		</Fragment>
+		<Fragment>
+			<TileContainer shipPositions={positions}>
+				{points.map(point => (
+					<Tile
+						key={TileIdentifier.instance.next(point)}
+						coordinates={point as Point}
+					/>
+				))}
+			</TileContainer>
+		</Fragment>
+	</LayoutMd>
 );
 
 const ViewMobile = () => (
-  <Layout>
-    <Fragment>
-      <HitContainer>
-        {positions.map((position) => (
-          <HitMarker key={position.id} id={position.id} />
-        ))}
-      </HitContainer>
-    </Fragment>
-    <Fragment>
-      <TileContainer shipPositions={positions}>
-        {points.map((point) => (
-          <Tile
-            key={TileIdentifier.instance.next(point)}
-            coordinates={point as Point}
-          />
-        ))}
-      </TileContainer>
-    </Fragment>
-  </Layout>
+	<Layout>
+		<Fragment>
+			<HitContainer>
+				{positions.map(position => (
+					<HitMarker key={position.id} id={position.id} />
+				))}
+			</HitContainer>
+		</Fragment>
+		<Fragment>
+			<TileContainer shipPositions={positions}>
+				{points.map(point => (
+					<Tile
+						key={TileIdentifier.instance.next(point)}
+						coordinates={point as Point}
+					/>
+				))}
+			</TileContainer>
+		</Fragment>
+	</Layout>
 );
 
 const ResponsiveView = () => {
-  const { currentBreakpoint } = useScreenBreakpoints();
+	const { currentBreakpoint } = useScreenBreakpoints();
 
-  if (currentBreakpoint === DEFAULT_BREAKPOINTS.Desktop) return <ViewDesktop />;
+	if (currentBreakpoint === DEFAULT_BREAKPOINTS.Desktop)
+		return <ViewDesktop />;
 
-  return <ViewMobile />;
+	return <ViewMobile />;
 };
 
 export const App = () => (
-  <Provider store={globalStore}>
-    <ResponsiveView />
-  </Provider>
+	<Provider store={globalStore}>
+		<ResponsiveView />
+	</Provider>
 );

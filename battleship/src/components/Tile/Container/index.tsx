@@ -8,38 +8,38 @@ import { hit } from "../../../state/hits";
 import { miss } from "../../../state/miss";
 
 export const TileContainer = ({
-  shipPositions,
-  children,
+	shipPositions,
+	children,
 }: TileContainerProps) => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  return (
-    <div className="grid grid-cols-10 max-w-3xl">
-      {Children.map<ReactNode, ReactNode>(children, (child) => {
-        if (!child || typeof (child as ReactElement).type === "string")
-          return child;
+	return (
+		<div className="grid grid-cols-10 max-w-3xl">
+			{Children.map<ReactNode, ReactNode>(children, child => {
+				if (!child || typeof (child as ReactElement).type === "string")
+					return child;
 
-        const props = (child as ReactElement).props as TileProps;
-        const tileId = TileIdentifier.instance.next(props.coordinates);
-        const isOccupiedByShip = shipPositions.find(
-          (position) => position.id === tileId
-        );
-        const onClick = () => {
-          if (isOccupiedByShip) dispatch(hit(tileId));
-          else dispatch(miss(tileId));
-        };
+				const props = (child as ReactElement).props as TileProps;
+				const tileId = TileIdentifier.instance.next(props.coordinates);
+				const isOccupiedByShip = shipPositions.find(
+					position => position.id === tileId,
+				);
+				const onClick = () => {
+					if (isOccupiedByShip) dispatch(hit(tileId));
+					else dispatch(miss(tileId));
+				};
 
-        return cloneElement(child as ReactElement, {
-          ...props,
-          id: tileId,
-          onClick,
-        });
-      })}
-    </div>
-  );
+				return cloneElement(child as ReactElement, {
+					...props,
+					id: tileId,
+					onClick,
+				});
+			})}
+		</div>
+	);
 };
 
 interface TileContainerProps {
-  children?: ReactNode;
-  shipPositions: Position[];
+	children?: ReactNode;
+	shipPositions: Position[];
 }
