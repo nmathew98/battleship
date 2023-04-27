@@ -6,7 +6,7 @@ describe("<TileContainer />", () => {
   it("should assign an id and event handlers to its children", () => {
     render(
       <TileContainer>
-        <Tile coordinate={[0, 0]} />
+        <Tile coordinates={[0, 0]} />
       </TileContainer>
     );
 

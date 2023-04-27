@@ -15,7 +15,7 @@ export const TileContainer = ({ children }: TileContainerProps) => {
           return child;
 
         const props = (child as ReactElement).props as TileProps;
-        const tileId = TileIdentifier.instance.next(props.coordinate);
+        const tileId = TileIdentifier.instance.next(props.coordinates);
         const onClick = () => dispatch(hit(tileId));
 
         return cloneElement(child as ReactElement, {

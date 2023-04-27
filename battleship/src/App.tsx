@@ -23,7 +23,7 @@ function App() {
         {points.map((point) => (
           <Tile
             key={TileIdentifier.instance.next(point)}
-            coordinate={point as Point}
+            coordinates={point as Point}
           />
         ))}
       </TileContainer>

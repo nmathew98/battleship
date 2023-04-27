@@ -17,7 +17,7 @@ export const Tile = ({ id, onClick }: TileProps) => {
 };
 
 export interface TileProps {
-  coordinate: Point;
+  coordinates: Point;
   id?: number;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
