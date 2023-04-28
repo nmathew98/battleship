@@ -37,7 +37,7 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 						srcSet={blankIcon}
 					/>
 					<img
-						className="h-auto w-full border-[0.5px] border-black sm:border-0"
+						className="h-auto w-full border-[0.5px] border-transparent sm:border-0"
 						src={blankIconSmall}
 						alt="Blank"
 					/>
