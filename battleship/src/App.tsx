@@ -14,6 +14,7 @@ import {
 	DEFAULT_BREAKPOINTS,
 	useScreenBreakpoint,
 } from "./hooks/useScreenBreakpoint";
+import { HitGroup } from "./components/Hit/Group";
 
 const ROWS = 10;
 const COLUMNS = 10;
@@ -27,13 +28,15 @@ const groupedPositions = positions.reduce(groupByPosition, Object.create(null));
 const ViewDesktop = () => (
 	<LayoutMd>
 		<Fragment>
-			{Object.entries(groupedPositions).map(([ship, positions]) => (
-				<HitContainer key={ship} ship={ship as ShipTypes}>
-					{positions.map(position => (
-						<HitMarker key={position.id} id={position.id} />
-					))}
-				</HitContainer>
-			))}
+			<HitGroup>
+				{Object.entries(groupedPositions).map(([ship, positions]) => (
+					<HitContainer key={ship} ship={ship as ShipTypes}>
+						{positions.map(position => (
+							<HitMarker key={position.id} id={position.id} />
+						))}
+					</HitContainer>
+				))}
+			</HitGroup>
 		</Fragment>
 		<Fragment>
 			<TileContainer shipPositions={positions}>
@@ -51,13 +54,17 @@ const ViewDesktop = () => (
 const ViewMobile = () => (
 	<Layout>
 		<Fragment>
-			{Object.entries(groupedPositions).map(([ship, positions]) => (
-				<HitContainer key={ship} ship={ship as ShipTypes}>
-					{positions.map(position => (
-						<HitMarker key={position.id} id={position.id} />
-					))}
-				</HitContainer>
-			))}
+			<HitGroup>
+				{Object.entries(groupShipsForMobile(groupedPositions)).map(
+					([ship, positions]) => (
+						<HitContainer key={ship} ship={ship as ShipTypes}>
+							{positions.map(position => (
+								<HitMarker key={position.id} id={position.id} />
+							))}
+						</HitContainer>
+					),
+				)}
+			</HitGroup>
 		</Fragment>
 		<Fragment>
 			<TileContainer shipPositions={positions}>
