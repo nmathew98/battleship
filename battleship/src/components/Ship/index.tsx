@@ -5,11 +5,16 @@ import carrier from "../../assets/carrier.png";
 import cruiser from "../../assets/cruiser.png";
 import submarine from "../../assets/submarine.png";
 
-export const Ship = ({ type, ...rest }: ShipProps) => (
-	<img src={SHIP_TYPES[type]} alt={transformAltText(type)} {...rest} />
+export const Ship = ({ className, type }: ShipProps) => (
+	<img
+		className={className}
+		src={SHIP_TYPES[type]}
+		alt={transformAltText(type)}
+	/>
 );
 
 interface ShipProps {
+	className?: string;
 	type: ShipTypes;
 }
 
