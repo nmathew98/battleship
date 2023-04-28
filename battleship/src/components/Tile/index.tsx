@@ -21,40 +21,46 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 			className={joinClasses(
 				!isHit && !isMiss,
 				"relative flex aspect-square cursor-default items-center hover:shadow-sm",
-				"cursor-pointer border transition hover:scale-105 hover:border-2 hover:border-amber-500 hover:shadow-sm active:scale-90 md:hover:border-4",
+				"cursor-pointer border bg-white transition hover:scale-105 hover:border-2 hover:border-amber-500 hover:shadow-sm active:scale-90 lg:hover:border-4",
 				y === 0 ? "border-l-2" : "",
 				x === 0 ? "border-t-2" : "",
 				y === 9 ? "border-r-2" : "",
 				x === 9 ? "border-b-2" : "",
 			)}>
-			{!!isHit && (
-				<picture>
-					<source
-						className="h-auto w-full"
-						media="(min-width: 600px)"
-						srcSet={hitIcon}
-					/>
-					<img
-						className="h-auto w-full border-[0.5px] border-black sm:border-0"
-						src={hitIconSmall}
-						alt="Hit"
-					/>
-				</picture>
-			)}
-			{!!isMiss && (
-				<picture>
-					<source
-						className="h-auto w-full"
-						media="(min-width: 600px)"
-						srcSet={missIcon}
-					/>
-					<img
-						className="h-auto w-full border-[0.5px] border-black sm:border-0"
-						src={missIconSmall}
-						alt="Miss"
-					/>
-				</picture>
-			)}
+			<picture
+				className={joinClasses(
+					isHit,
+					"absolute aspect-square bg-white opacity-0",
+					"opacity-100",
+				)}>
+				<source
+					className="h-auto w-full"
+					media="(min-width: 600px)"
+					srcSet={hitIcon}
+				/>
+				<img
+					className="h-auto w-full border-[0.5px] border-black sm:border-0"
+					src={hitIconSmall}
+					alt="Hit"
+				/>
+			</picture>
+			<picture
+				className={joinClasses(
+					isMiss,
+					"absolute aspect-square bg-white opacity-0",
+					"opacity-100",
+				)}>
+				<source
+					className="h-auto w-full"
+					media="(min-width: 600px)"
+					srcSet={missIcon}
+				/>
+				<img
+					className="h-auto w-full border-[0.5px] border-black sm:border-0"
+					src={missIconSmall}
+					alt="Miss"
+				/>
+			</picture>
 			{!!import.meta.env.DEV && (
 				<>
 					<span className="absolute bottom-0 right-0 text-xs text-emerald-500">

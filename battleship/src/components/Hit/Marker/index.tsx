@@ -10,16 +10,16 @@ export const HitMarker = ({ id }: HitMarkerProps) => {
 	return (
 		<>
 			{!!isHit && (
-				<div className="h-auto w-3 md:w-10">
+				<div className="h-auto w-3 sm:w-5 md:w-6 lg:w-10">
 					<XMarkIcon
-						className="h-auto w-3 text-red-500 md:w-10"
+						className="h-auto w-3 text-red-500 sm:w-5 md:w-6 lg:w-10"
 						aria-label="Hit"
 					/>
 				</div>
 			)}
 			{!isHit && (
 				<img
-					className="h-auto w-3 md:w-10"
+					className="h-auto w-3 sm:w-5 md:w-6 lg:w-10"
 					src={missIconSmall}
 					alt="Not Hit"
 				/>
