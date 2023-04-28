@@ -3,11 +3,13 @@ import { useSelector } from "react-redux";
 
 import type { Point } from "../../utilities/cartesian-grid";
 import { makeSelectHit } from "../../state/hits";
-import hitIcon from "../../assets/hit-144.png";
-import hitIconSmall from "../../assets/hit-64.png";
-import missIcon from "../../assets/miss-144.png";
-import missIconSmall from "../../assets/miss-64.png";
 import { makeSelectMissedHit } from "../../state/miss";
+import hitIconSmall from "../../assets/hit-64.png";
+import hitIcon from "../../assets/hit-144.png";
+import missIconSmall from "../../assets/miss-64.png";
+import missIcon from "../../assets/miss-144.png";
+import blankIconSmall from "../../assets/blank-64.png";
+import blankIcon from "../../assets/blank-144.png";
 
 export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 	const [x, y] = coordinates;
@@ -27,40 +29,48 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 				y === 9 ? "border-r-2" : "",
 				x === 9 ? "border-b-2" : "",
 			)}>
-			<picture
-				className={joinClasses(
-					isHit,
-					"absolute aspect-square bg-white opacity-0",
-					"opacity-100",
-				)}>
-				<source
-					className="h-auto w-full"
-					media="(min-width: 600px)"
-					srcSet={hitIcon}
-				/>
-				<img
-					className="h-auto w-full border-[0.5px] border-black sm:border-0"
-					src={hitIconSmall}
-					alt="Hit"
-				/>
-			</picture>
-			<picture
-				className={joinClasses(
-					isMiss,
-					"absolute aspect-square bg-white opacity-0",
-					"opacity-100",
-				)}>
-				<source
-					className="h-auto w-full"
-					media="(min-width: 600px)"
-					srcSet={missIcon}
-				/>
-				<img
-					className="h-auto w-full border-[0.5px] border-black sm:border-0"
-					src={missIconSmall}
-					alt="Miss"
-				/>
-			</picture>
+			{!isHit && !isMiss && (
+				<picture className="absolute aspect-square bg-white">
+					<source
+						className="h-auto w-full"
+						media="(min-width: 600px)"
+						srcSet={blankIcon}
+					/>
+					<img
+						className="h-auto w-full border-[0.5px] border-black sm:border-0"
+						src={blankIconSmall}
+						alt="Blank"
+					/>
+				</picture>
+			)}
+			{!!isHit && (
+				<picture className="absolute aspect-square bg-white">
+					<source
+						className="h-auto w-full"
+						media="(min-width: 600px)"
+						srcSet={hitIcon}
+					/>
+					<img
+						className="h-auto w-full border-[0.5px] border-black sm:border-0"
+						src={hitIconSmall}
+						alt="Hit"
+					/>
+				</picture>
+			)}
+			{!!isMiss && (
+				<picture className="absolute aspect-square bg-white">
+					<source
+						className="h-auto w-full"
+						media="(min-width: 600px)"
+						srcSet={missIcon}
+					/>
+					<img
+						className="h-auto w-full border-[0.5px] border-black sm:border-0"
+						src={missIconSmall}
+						alt="Miss"
+					/>
+				</picture>
+			)}
 			{!!import.meta.env.DEV && (
 				<>
 					<span className="absolute bottom-0 right-0 text-xs text-emerald-500">
