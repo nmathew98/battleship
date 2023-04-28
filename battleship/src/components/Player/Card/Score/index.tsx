@@ -7,7 +7,7 @@ export const PlayerCardScore = ({ type }: PlayerCardScoreProps) => {
 	const hits = useSelector(selector);
 
 	return (
-		<span className="text-center text-5xl font-bold text-[#4a4a4a]">
+		<span className="text-center text-8xl font-bold text-[#4a4a4a]">
 			{formatScore(Object.keys(hits).length)}
 		</span>
 	);
