@@ -17,6 +17,7 @@ import {
 import { HitGroup } from "./components/Hit/Group";
 import { PlayerCard } from "./components/Player/Card";
 import { PlayerCardContainer } from "./components/Player/Card/Container";
+import { LayoutLg } from "./layouts/Lg";
 
 const ROWS = 10;
 const COLUMNS = 10;
@@ -31,7 +32,7 @@ const positionsGroupedByShips = positions.reduce(
 	Object.create(null),
 );
 const ViewDesktop = () => (
-	<LayoutMd>
+	<LayoutLg>
 		<Fragment>
 			<PlayerCardContainer>
 				<PlayerCard label="player 1" />
@@ -64,13 +65,52 @@ const ViewDesktop = () => (
 				))}
 			</TileContainer>
 		</Fragment>
-	</LayoutMd>
+	</LayoutLg>
 );
 
 const positionsGroupedByMobile = positions.reduce(
 	groupPositions("mobile"),
 	Object.create(null),
 );
+
+const ViewTablet = () => (
+	<LayoutMd>
+		<Fragment>
+			<PlayerCardContainer>
+				<PlayerCard label="player 1" />
+				<PlayerCard
+					className="bg-emerald-500"
+					label="player 2"
+					type="external"
+				/>
+			</PlayerCardContainer>{" "}
+		</Fragment>
+		<Fragment>
+			<HitGroup>
+				{Object.entries(positionsGroupedByMobile).map(
+					([ship, positions]) => (
+						<HitContainer key={ship} ship={ship as ShipTypes}>
+							{positions.map(position => (
+								<HitMarker key={position.id} id={position.id} />
+							))}
+						</HitContainer>
+					),
+				)}
+			</HitGroup>
+		</Fragment>
+		<Fragment>
+			<TileContainer shipPositions={positions}>
+				{points.map(point => (
+					<Tile
+						key={TileIdentifier.instance.next(point)}
+						coordinates={point as Point}
+					/>
+				))}
+			</TileContainer>
+		</Fragment>
+	</LayoutMd>
+);
+
 const ViewMobile = () => (
 	<Layout>
 		<Fragment>
@@ -114,6 +154,8 @@ const ResponsiveView = () => {
 
 	if (currentBreakpoint === DEFAULT_BREAKPOINTS.Desktop)
 		return <ViewDesktop />;
+
+	if (currentBreakpoint === DEFAULT_BREAKPOINTS.Tablet) return <ViewTablet />;
 
 	return <ViewMobile />;
 };
