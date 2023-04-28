@@ -15,7 +15,7 @@
     "expect": true,
     "forwardRef": true,
     "getShipPositions": true,
-    "groupShips": true,
+    "groupPositions": true,
     "it": true,
     "joinClasses": true,
     "lazy": true,

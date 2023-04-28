@@ -25,7 +25,7 @@ const points = new Array(ROWS * COLUMNS).fill(null).map(() => grid.next);
 const positions = getShipPositions(SHIP_LAYOUT);
 
 const positionsGroupedByShips = positions.reduce(
-	groupShips("ships"),
+	groupPositions("ships"),
 	Object.create(null),
 );
 const ViewDesktop = () => (
@@ -57,7 +57,7 @@ const ViewDesktop = () => (
 );
 
 const positionsGroupedByMobile = positions.reduce(
-	groupShips("mobile"),
+	groupPositions("mobile"),
 	Object.create(null),
 );
 const ViewMobile = () => (

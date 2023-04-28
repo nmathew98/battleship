@@ -1,6 +1,6 @@
-import { Position, ShipTypes } from "../types/ship-layout";
+import type { Position, ShipTypes } from "../types/ship-layout";
 
-export const groupShips = (by: "mobile" | "ships") => {
+export const groupPositions = (by: "mobile" | "ships") => {
 	switch (by) {
 		case "mobile": {
 			return groupByMobile;
@@ -25,7 +25,7 @@ const groupByMobile = (
 		[position.ship]: [...(grouped[position.ship] ?? []), position],
 	};
 
-	if (idx === arr.length - 1) {
+	if (idx === arr.length - 1)
 		return {
 			carrier: _grouped.carrier,
 			submarine: _grouped.submarine,
@@ -33,7 +33,6 @@ const groupByMobile = (
 			destroyer: _grouped.destroyer,
 			cruiser: _grouped.cruiser,
 		};
-	}
 
 	return _grouped;
 };
