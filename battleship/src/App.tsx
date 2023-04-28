@@ -15,6 +15,8 @@ import {
 	useScreenBreakpoint,
 } from "./hooks/useScreenBreakpoint";
 import { HitGroup } from "./components/Hit/Group";
+import { PlayerCard } from "./components/Player/Card";
+import { PlayerCardContainer } from "./components/Player/Card/Container";
 
 const ROWS = 10;
 const COLUMNS = 10;
@@ -31,6 +33,15 @@ const positionsGroupedByShips = positions.reduce(
 const ViewDesktop = () => (
 	<LayoutMd>
 		<Fragment>
+			<PlayerCardContainer>
+				<PlayerCard label="player 1" />
+				<PlayerCard
+					className="bg-emerald-500"
+					label="player 2"
+					type="external"
+				/>
+			</PlayerCardContainer>
+
 			<HitGroup>
 				{Object.entries(positionsGroupedByShips).map(
 					([ship, positions]) => (

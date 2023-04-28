@@ -21,7 +21,7 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 			className={joinClasses(
 				!isHit && !isMiss,
 				"relative flex aspect-square cursor-default items-center hover:shadow-sm",
-				"cursor-pointer border transition hover:scale-105 hover:border-4 hover:border-orange-400 hover:shadow-sm active:scale-90",
+				"cursor-pointer border transition hover:scale-105 hover:border-4 hover:border-amber-500 hover:shadow-sm active:scale-90",
 				y === 0 ? "border-l-2" : "",
 				x === 0 ? "border-t-2" : "",
 				y === 9 ? "border-r-2" : "",
