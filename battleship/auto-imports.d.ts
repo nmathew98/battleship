@@ -19,7 +19,7 @@ declare global {
   const expect: typeof import('vitest')['expect']
   const forwardRef: typeof import('react')['forwardRef']
   const getShipPositions: typeof import('./src/utilities/get-ship-positions/index')['getShipPositions']
-  const groupByPosition: typeof import('./src/utilities/group-by-position/index')['groupByPosition']
+  const groupByPosition: typeof import('./src/utilities/group-by-position')['groupByPosition']
   const groupShipsForMobile: typeof import('./src/utilities/group-ships-for-mobile')['groupShipsForMobile']
   const it: typeof import('vitest')['it']
   const joinClasses: typeof import('./src/utilities/join-classes')['joinClasses']

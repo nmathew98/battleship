@@ -1,4 +1,4 @@
-import type { Position, ShipTypes } from "../../types/ship-layout";
+import type { Position, ShipTypes } from "../types/ship-layout";
 
 export const groupByPosition = (
 	grouped: Record<ShipTypes, Position[]>,
