@@ -1,29 +1,20 @@
-import { useDispatch } from "react-redux";
-
-import { render, screen } from "../../../tests/spec";
+import { cleanup, render, screen } from "../../../tests/spec";
 import { HitMarker } from ".";
-import { hit } from "../../../state/hits";
 
 describe("<HitMarker />", () => {
-	it("should show 'Not Hit!' when the ship is not hit", () => {
+	beforeEach(cleanup);
+
+	it("should render child when not hit", () => {
 		render(<HitMarker id={1} />);
+
+		expect(screen.getByAltText("Not Hit")).toBeTruthy();
+		expect(() => screen.getByLabelText("Hit")).toThrow();
 	});
 
-	it("should show 'Hit! when the ship is hit", () => {
-		const HitMarkerTest = () => {
-			const dispatch = useDispatch();
+	it("should render child when hit", async () => {
+		render(<HitMarker id={2} />, { preloadedState: { hits: { 2: true } } });
 
-			useEffect(() => {
-				dispatch(hit(2));
-			}, []);
-
-			return <HitMarker id={2} />;
-		};
-
-		render(<HitMarkerTest />);
-
-		const marker = screen.getByText("Hit");
-
-		expect(marker).toBeTruthy();
+		expect(() => screen.getByAltText("Not Hit")).toThrow();
+		expect(screen.getByLabelText("Hit")).toBeTruthy();
 	});
 });
