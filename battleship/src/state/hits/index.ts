@@ -17,3 +17,5 @@ export const { hit } = hitsSlice.actions;
 export const makeSelectHit =
 	(id: number) => (state: ReturnType<typeof globalStore.getState>) =>
 		state.hits[id] ?? false;
+export const selectAllHits = (state: ReturnType<typeof globalStore.getState>) =>
+	state.hits ?? Object.create(null);
