@@ -16,6 +16,7 @@
     "forwardRef": true,
     "getShipPositions": true,
     "groupByPosition": true,
+    "groupShipsForMobile": true,
     "it": true,
     "joinClasses": true,
     "lazy": true,
