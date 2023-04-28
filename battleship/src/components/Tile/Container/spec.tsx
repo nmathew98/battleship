@@ -5,6 +5,9 @@ import { Position } from "../../../types/ship-layout";
 
 describe("<TileContainer />", () => {
 	it("should assign an id and event handlers to its children", () => {
+		const HIT_PICTURE_IDX = 0;
+		const MISS_PICTURE_IDX = 1;
+
 		const shipPositions = [
 			{
 				coordinates: [0, 0],
@@ -26,10 +29,27 @@ describe("<TileContainer />", () => {
 		fireEvent.click(tileOne);
 		fireEvent.click(tileTwo);
 
-		const hitTile = screen.getByAltText("Hit");
-		const missTile = screen.getByAltText("Miss");
+		const hitTile = screen.getByTestId("tile-1");
+		const missTile = screen.getByTestId("tile-2");
 
-		expect(hitTile).toBeTruthy();
-		expect(missTile).toBeTruthy();
+		expect(
+			hitTile.children[HIT_PICTURE_IDX].classList.contains("opacity-100"),
+		).toBeTruthy();
+		expect(
+			missTile.children[MISS_PICTURE_IDX].classList.contains(
+				"opacity-100",
+			),
+		).toBeTruthy();
+
+		expect(
+			hitTile.children[MISS_PICTURE_IDX].classList.contains(
+				"opacity-100",
+			),
+		).toBeFalsy();
+		expect(
+			missTile.children[HIT_PICTURE_IDX].classList.contains(
+				"opacity-100",
+			),
+		).toBeFalsy();
 	});
 });

@@ -5,7 +5,7 @@ export const DEFAULT_BREAKPOINTS = {
 
 const DEFAULT_MEDIA_QUERIES = {
 	"(max-width: 640px)": DEFAULT_BREAKPOINTS.Mobile,
-	"(min-width: 640px)": DEFAULT_BREAKPOINTS.Desktop,
+	"(min-width: 1024px)": DEFAULT_BREAKPOINTS.Desktop,
 };
 
 export const useScreenBreakpoint = (

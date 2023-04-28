@@ -81,8 +81,9 @@ const ViewMobile = () => (
 					label="player 2"
 					type="external"
 				/>
-			</PlayerCardContainer>
-
+			</PlayerCardContainer>{" "}
+		</Fragment>
+		<Fragment>
 			<HitGroup>
 				{Object.entries(positionsGroupedByMobile).map(
 					([ship, positions]) => (
