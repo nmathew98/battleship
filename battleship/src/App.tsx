@@ -74,6 +74,15 @@ const positionsGroupedByMobile = positions.reduce(
 const ViewMobile = () => (
 	<Layout>
 		<Fragment>
+			<PlayerCardContainer>
+				<PlayerCard label="player 1" />
+				<PlayerCard
+					className="bg-emerald-500"
+					label="player 2"
+					type="external"
+				/>
+			</PlayerCardContainer>
+
 			<HitGroup>
 				{Object.entries(positionsGroupedByMobile).map(
 					([ship, positions]) => (
