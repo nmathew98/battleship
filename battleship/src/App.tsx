@@ -23,19 +23,24 @@ const grid = new CartesianGrid(ROWS, COLUMNS);
 
 const points = new Array(ROWS * COLUMNS).fill(null).map(() => grid.next);
 const positions = getShipPositions(SHIP_LAYOUT);
-const groupedPositions = positions.reduce(groupByPosition, Object.create(null));
 
+const positionsGroupedByShips = positions.reduce(
+	groupShips("ships"),
+	Object.create(null),
+);
 const ViewDesktop = () => (
 	<LayoutMd>
 		<Fragment>
 			<HitGroup>
-				{Object.entries(groupedPositions).map(([ship, positions]) => (
-					<HitContainer key={ship} ship={ship as ShipTypes}>
-						{positions.map(position => (
-							<HitMarker key={position.id} id={position.id} />
-						))}
-					</HitContainer>
-				))}
+				{Object.entries(positionsGroupedByShips).map(
+					([ship, positions]) => (
+						<HitContainer key={ship} ship={ship as ShipTypes}>
+							{positions.map(position => (
+								<HitMarker key={position.id} id={position.id} />
+							))}
+						</HitContainer>
+					),
+				)}
 			</HitGroup>
 		</Fragment>
 		<Fragment>
@@ -51,11 +56,15 @@ const ViewDesktop = () => (
 	</LayoutMd>
 );
 
+const positionsGroupedByMobile = positions.reduce(
+	groupShips("mobile"),
+	Object.create(null),
+);
 const ViewMobile = () => (
 	<Layout>
 		<Fragment>
 			<HitGroup>
-				{Object.entries(groupShipsForMobile(groupedPositions)).map(
+				{Object.entries(positionsGroupedByMobile).map(
 					([ship, positions]) => (
 						<HitContainer key={ship} ship={ship as ShipTypes}>
 							{positions.map(position => (
