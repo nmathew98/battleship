@@ -1,6 +1,5 @@
 import { Provider, useSelector } from "react-redux";
 import { Fragment } from "react";
-import { createPortal } from "react-dom";
 
 import type { Point } from "./utilities/cartesian-grid";
 import type { ShipTypes } from "./types/ship-layout";
@@ -21,6 +20,7 @@ import { PlayerCardContainer } from "./components/Player/Card/Container";
 import { LayoutLg } from "./layouts/Lg";
 import { Notification } from "./components/Notification";
 import { makeSelectAreAllShipsHit } from "./state/hits";
+import { Portal } from "./components/Portal";
 
 const ROWS = 10;
 const COLUMNS = 10;
@@ -152,13 +152,13 @@ const ViewMobile = () => (
 	</Layout>
 );
 
-const ShipsHaveSunk = () =>
-	createPortal(
+const ShipsHaveSunk = () => (
+	<Portal>
 		<Notification header="You have sunk all the ships" success>
 			Congratulations, you have sunk all the ships!
-		</Notification>,
-		document.body,
-	);
+		</Notification>
+	</Portal>
+);
 
 const ResponsiveView = () => {
 	const { currentBreakpoint } = useScreenBreakpoint();
