@@ -8,12 +8,17 @@ export const Notification = ({
 	header,
 	success,
 	children,
+	removePortal,
 }: NotificationProps) => {
 	const [show, setShow] = useState(true);
 
 	const onClickClose = () => {
 		setShow(false);
 	};
+
+	useEffect(() => {
+		if (!show) removePortal?.();
+	}, [show]);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
@@ -85,4 +90,5 @@ interface NotificationProps {
 	header: string;
 	success?: boolean;
 	children?: ReactNode;
+	removePortal?: () => void;
 }
