@@ -1,4 +1,5 @@
-import { Children, ReactElement, ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
+import { Children } from "react";
 
 import type { ShipTypes } from "../../../types/ship-layout";
 import { Ship } from "../../Ship";
