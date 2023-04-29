@@ -17,10 +17,6 @@ export const Notification = ({
 	};
 
 	useEffect(() => {
-		if (!show) removePortal?.();
-	}, [show]);
-
-	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setShow(false);
 		}, 1000);
@@ -42,7 +38,8 @@ export const Notification = ({
 						enterTo="translate-y-0 opacity-100 sm:translate-x-0"
 						leave="transition ease-in duration-100"
 						leaveFrom="opacity-100"
-						leaveTo="opacity-0">
+						leaveTo="opacity-0"
+						afterLeave={removePortal}>
 						<div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
 							<div className="p-4">
 								<div className="flex items-start">

@@ -17,7 +17,6 @@ export const Portal = ({ container, children }: PortalProps) => {
 
 	const portalContainer = <div id={clonedElementId}>{clonedChild}</div>;
 
-	// Once this effect runs this (`Portal`) will be unmounted
 	useEffect(() => {
 		if (shouldPortalContainerBeRemoved) {
 			const el = document.getElementById(clonedElementId);
