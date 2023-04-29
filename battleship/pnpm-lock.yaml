@@ -21,6 +21,9 @@ dependencies:
         version: 4.2.1
 
 devDependencies:
+    "@headlessui/react":
+        specifier: ^1.7.14
+        version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
     "@redux-devtools/core":
         specifier: ^3.13.1
         version: 3.13.1(react-redux@8.0.5)(react@18.2.0)(redux@4.2.1)
@@ -466,6 +469,21 @@ packages:
                 integrity: sha512-IoD2MfUnOV58ghIHCiil01PcohxjbYR/qCxsoC+xNgUwh1EY8jOOrYmu3d3a71+tJJ23uscEV4X2HJWMsPJu4g==,
             }
         engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+        dev: true
+
+    /@headlessui/react@1.7.14(react-dom@18.2.0)(react@18.2.0):
+        resolution:
+            {
+                integrity: sha512-znzdq9PG8rkwcu9oQ2FwIy0ZFtP9Z7ycS+BAqJ3R5EIqC/0bJGvhT7193rFf+45i9nnPsYvCQVW4V/bB9Xc+gA==,
+            }
+        engines: { node: ">=10" }
+        peerDependencies:
+            react: ^16 || ^17 || ^18
+            react-dom: ^16 || ^17 || ^18
+        dependencies:
+            client-only: 0.0.1
+            react: 18.2.0
+            react-dom: 18.2.0(react@18.2.0)
         dev: true
 
     /@heroicons/react@2.0.17(react@18.2.0):
@@ -1548,6 +1566,13 @@ packages:
             readdirp: 3.6.0
         optionalDependencies:
             fsevents: 2.3.2
+        dev: true
+
+    /client-only@0.0.1:
+        resolution:
+            {
+                integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==,
+            }
         dev: true
 
     /color-convert@1.9.3:
