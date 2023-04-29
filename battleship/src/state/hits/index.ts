@@ -20,3 +20,10 @@ export const makeSelectHit =
 export const selectNumberOfHits = (
 	state: ReturnType<typeof globalStore.getState>,
 ) => Object.keys(state.hits ?? Object.create(null)).length;
+export const makeSelectIsShipHit =
+	(tiles: number[]) => (state: ReturnType<typeof globalStore.getState>) =>
+		tiles.every(tile => tile in state.hits);
+export const makeSelectAreAllShipsHit =
+	(numberOfTiles: number) =>
+	(state: ReturnType<typeof globalStore.getState>) =>
+		Object.keys(state.hits ?? Object.create(null)).length === numberOfTiles;

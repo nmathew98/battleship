@@ -1,5 +1,6 @@
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { Fragment } from "react";
+import { createPortal } from "react-dom";
 
 import type { Point } from "./utilities/cartesian-grid";
 import type { ShipTypes } from "./types/ship-layout";
@@ -18,6 +19,8 @@ import { HitGroup } from "./components/Hit/Group";
 import { PlayerCard } from "./components/Player/Card";
 import { PlayerCardContainer } from "./components/Player/Card/Container";
 import { LayoutLg } from "./layouts/Lg";
+import { Notification } from "./components/Notification";
+import { makeSelectAreAllShipsHit } from "./state/hits";
 
 const ROWS = 10;
 const COLUMNS = 10;
@@ -149,15 +152,35 @@ const ViewMobile = () => (
 	</Layout>
 );
 
+const ShipsHaveSunk = () =>
+	createPortal(
+		<Notification header="You have sunk all the ships" success>
+			Congratulations, you have sunk all the ships!
+		</Notification>,
+		document.body,
+	);
+
 const ResponsiveView = () => {
 	const { currentBreakpoint } = useScreenBreakpoint();
+	const areAllShipsHit = useSelector(
+		makeSelectAreAllShipsHit(positions.length),
+	);
 
-	if (currentBreakpoint === DEFAULT_BREAKPOINTS.Desktop)
-		return <ViewDesktop />;
+	const responsiveViews = {
+		[DEFAULT_BREAKPOINTS.Desktop]: ViewDesktop,
+		[DEFAULT_BREAKPOINTS.Tablet]: ViewTablet,
+		[DEFAULT_BREAKPOINTS.Mobile]: ViewMobile,
+		default: ViewMobile,
+	};
 
-	if (currentBreakpoint === DEFAULT_BREAKPOINTS.Tablet) return <ViewTablet />;
+	const BreakpointView = responsiveViews[currentBreakpoint ?? "default"];
 
-	return <ViewMobile />;
+	return (
+		<>
+			<BreakpointView />
+			{areAllShipsHit && <ShipsHaveSunk />}
+		</>
+	);
 };
 
 export const App = () => (
