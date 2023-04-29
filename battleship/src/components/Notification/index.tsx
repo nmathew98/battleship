@@ -8,6 +8,7 @@ export const Notification = ({
 	header,
 	success,
 	children,
+	removePortal,
 }: NotificationProps) => {
 	const [show, setShow] = useState(true);
 
@@ -37,7 +38,8 @@ export const Notification = ({
 						enterTo="translate-y-0 opacity-100 sm:translate-x-0"
 						leave="transition ease-in duration-100"
 						leaveFrom="opacity-100"
-						leaveTo="opacity-0">
+						leaveTo="opacity-0"
+						afterLeave={removePortal}>
 						<div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
 							<div className="p-4">
 								<div className="flex items-start">
@@ -85,4 +87,5 @@ interface NotificationProps {
 	header: string;
 	success?: boolean;
 	children?: ReactNode;
+	removePortal?: () => void;
 }
