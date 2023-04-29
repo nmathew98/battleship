@@ -14,6 +14,7 @@ export const Notification = ({
 	const onClickClose = () => {
 		setShow(false);
 	};
+
 	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setShow(false);
@@ -24,12 +25,10 @@ export const Notification = ({
 
 	return (
 		<>
-			{/* Global notification live region, render this permanently at the end of the document */}
 			<div
 				aria-live="assertive"
 				className="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:p-6">
 				<div className="flex w-full flex-col items-center space-y-4">
-					{/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
 					<Transition
 						show={show}
 						as={Fragment}
@@ -45,23 +44,23 @@ export const Notification = ({
 									<div className="flex-shrink-0">
 										{!!success && (
 											<CheckCircleIcon
-												className="h-6 w-6 text-green-400"
+												className="h-6 w-6 text-emerald-400"
 												aria-hidden="true"
 											/>
 										)}
 									</div>
 									<div className="ml-3 w-0 flex-1 pt-0.5">
-										<p className="text-sm font-medium text-gray-900">
+										<p className="text-tuscan-900 text-sm font-medium">
 											{header}
 										</p>
-										<p className="mt-1 text-sm text-gray-500">
+										<p className="text-tuscan-500 mt-1 text-sm">
 											{children}
 										</p>
 									</div>
 									<div className="ml-4 flex flex-shrink-0">
 										<button
 											type="button"
-											className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+											className="text-tuscan-400 hover:text-tuscan-500 inline-flex rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
 											onClick={onClickClose}>
 											<span className="sr-only">
 												Close
