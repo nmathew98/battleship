@@ -7,7 +7,7 @@ import { HitMarkerProps } from "../Marker";
 import { useSelector } from "react-redux";
 import { makeSelectIsShipHit } from "../../../state/hits";
 import { Notification } from "../../Notification";
-import { Portal } from "../../Portal";
+import { createPortal } from "react-dom";
 
 export const HitContainer = ({ ship, children }: HitContainerProps) => {
 	const hits = Children.map(children, child => {
@@ -23,15 +23,15 @@ export const HitContainer = ({ ship, children }: HitContainerProps) => {
 			<div className="space-between flex items-center lg:my-2">
 				{children}
 			</div>
-			{!!isShipHit && (
-				<Portal>
+			{!!isShipHit &&
+				createPortal(
 					<Notification
 						header={`${formatShipName(ship)} is down!`}
 						success>
 						You have sunk the {formatShipName(ship)}!
-					</Notification>
-				</Portal>
-			)}
+					</Notification>,
+					document.body,
+				)}
 		</div>
 	);
 };
