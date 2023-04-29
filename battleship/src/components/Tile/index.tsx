@@ -20,6 +20,7 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 		<button
 			data-testid={`tile-${id}`}
 			onClick={onClick}
+			disabled={isHit || isMiss}
 			className={joinClasses(
 				!isHit && !isMiss,
 				"relative flex aspect-square cursor-default items-center hover:shadow-sm",
