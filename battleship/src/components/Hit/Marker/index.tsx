@@ -22,6 +22,8 @@ export const HitMarker = ({ id }: HitMarkerProps) => {
 					className="h-auto w-1/6"
 					src={missIconSmall}
 					alt="Not Hit"
+					width="64"
+					height="64"
 				/>
 			)}
 		</>

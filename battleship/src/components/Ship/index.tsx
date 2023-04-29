@@ -10,6 +10,8 @@ export const Ship = ({ className, type }: ShipProps) => (
 		className={className}
 		src={SHIP_TYPES[type]}
 		alt={transformAltText(type)}
+		width={SHIP_DIMENSIONS[type].width}
+		height={SHIP_DIMENSIONS[type].height}
 	/>
 );
 
@@ -24,6 +26,31 @@ const SHIP_TYPES: { [key in ShipTypes]: string } = {
 	carrier: destroyer,
 	cruiser: cruiser,
 	submarine: submarine,
+};
+
+const SHIP_DIMENSIONS: {
+	[key in ShipTypes]: { width: number; height: number };
+} = {
+	destroyer: {
+		width: 480,
+		height: 128,
+	},
+	battleship: {
+		width: 480,
+		height: 128,
+	},
+	carrier: {
+		width: 480,
+		height: 128,
+	},
+	cruiser: {
+		width: 480,
+		height: 128,
+	},
+	submarine: {
+		width: 480,
+		height: 128,
+	},
 };
 
 const transformAltText = (type: ShipTypes) =>

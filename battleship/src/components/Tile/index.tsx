@@ -36,11 +36,15 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 						className="h-auto w-full"
 						media="(min-width: 600px)"
 						srcSet={blankIcon}
+						width="144"
+						height="144"
 					/>
 					<img
 						className="h-auto w-full border-[0.5px] border-transparent sm:border-0"
 						src={blankIconSmall}
 						alt="Blank"
+						width="64"
+						height="64"
 					/>
 				</picture>
 			)}
@@ -50,11 +54,15 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 						className="h-auto w-full"
 						media="(min-width: 600px)"
 						srcSet={hitIcon}
+						width="144"
+						height="144"
 					/>
 					<img
 						className="h-auto w-full border-[0.5px] border-black sm:border-0"
 						src={hitIconSmall}
 						alt="Hit"
+						width="64"
+						height="64"
 					/>
 				</picture>
 			)}
@@ -64,11 +72,15 @@ export const Tile = ({ coordinates, id, onClick }: TileProps) => {
 						className="h-auto w-full"
 						media="(min-width: 600px)"
 						srcSet={missIcon}
+						width="144"
+						height="144"
 					/>
 					<img
 						className="h-auto w-full border-[0.5px] border-black sm:border-0"
 						src={missIconSmall}
 						alt="Miss"
+						width="64"
+						height="64"
 					/>
 				</picture>
 			)}
